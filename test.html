@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="utf-8">
+  <title>my first export PDF</title>
+  <script src="pdfmake.min.js"></script>
+  <script src="方正vfs_fonts.js"></script>
+  <script>
+  function down(data) {
+            var dd = {
+                content: [
+                    data,
+                    'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines'
+                ],
+                defaultStyle: {
+                    font: '方正姚体'
+                }
+            };
+            pdfMake.fonts = {
+                Roboto: {
+                    normal: 'Roboto-Regular.ttf',
+                    bold: 'Roboto-Medium.ttf',
+                    italics: 'Roboto-Italic.ttf',
+                    bolditalics: 'Roboto-Italic.ttf'
+                },
+                方正姚体: {
+                    normal: 'FZYTK.TTF',
+                    bold: 'FZYTK.TTF',
+                    italics: 'FZYTK.TTF',
+                    bolditalics: 'FZYTK.TTF',
+                }
+            };
+            pdfMake.createPdf(dd).download();
+        }
+  </script>
+  </head>
+  <body>
+  <button onclick="down('pdf文件显示中文')">下载</button>
+  </body>
+</html>
